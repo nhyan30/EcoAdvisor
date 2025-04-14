@@ -10,13 +10,11 @@ class Splash2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: const Color.fromARGB(255, 18, 32, 47),
+      theme: ThemeData.light().copyWith(
+        scaffoldBackgroundColor: const Color(0xFFF5FFEC),
       ),
       home: Scaffold(
-        body: ListView(children: [
-          SplashScreen2(),
-        ]),
+        body: SplashScreen2(),
       ),
     );
   }
@@ -25,39 +23,73 @@ class Splash2 extends StatelessWidget {
 class SplashScreen2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-      Container(
-      width: 412,
-      height: 869,
-      clipBehavior: Clip.antiAlias,
-      decoration: ShapeDecoration(
+    return Container(
+      width: double.infinity,
+      height: double.infinity,
+      decoration: BoxDecoration(
         color: const Color(0xFFF5FFEC),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(50),
-        ),
+        borderRadius: BorderRadius.circular(50),
       ),
       child: Stack(
         children: [
+          // Removed the time display that was here
+          
+          // Main image - people recycling
           Positioned(
-            left: 348.67,
-            top: 204.58,
-            child: Container(
-              width: 65,
-              height: 60,
-              clipBehavior: Clip.antiAlias,
-              decoration: BoxDecoration(),
-              child: Stack(),
+            top: 150,
+            left: 0,
+            right: 0,
+            child: Center(
+              child: Image.asset(
+                'images/recycling_people.png',
+                width: 300,
+                height: 300,
+                fit: BoxFit.contain,
+              ),
             ),
           ),
+          
+          // Title text
           Positioned(
-            left: 176,
-            top: 696,
+            left: 0,
+            right: 0,
+            top: 500,
+            child: Text(
+              'Join the Green Movement',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 20,
+                fontFamily: 'Poppins',
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ),
+          
+          // Subtitle text
+          Positioned(
+            left: 20,
+            right: 20,
+            top: 540,
+            child: Text(
+              'Contribute to sustainability with easy, effective recycling.',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: const Color(0xFF636363),
+                fontSize: 16,
+                fontFamily: 'Poppins',
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+          ),
+          
+          // Pagination dots
+          Positioned(
+            left: 0,
+            right: 0,
+            bottom: 120,
             child: Row(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              spacing: 4,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
                   width: 24,
@@ -69,6 +101,7 @@ class SplashScreen2 extends StatelessWidget {
                     ),
                   ),
                 ),
+                SizedBox(width: 5),
                 Container(
                   width: 5,
                   height: 5,
@@ -79,6 +112,7 @@ class SplashScreen2 extends StatelessWidget {
                     ),
                   ),
                 ),
+                SizedBox(width: 5),
                 Container(
                   width: 5,
                   height: 5,
@@ -92,16 +126,16 @@ class SplashScreen2 extends StatelessWidget {
               ],
             ),
           ),
+          
+          // Skip text and next button
           Positioned(
-            left: 30,
-            top: 749,
-            child: Container(
-              width: 333,
+            left: 0,
+            right: 0,
+            bottom: 50,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30),
               child: Row(
-                mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.end,
-                spacing: 252,
                 children: [
                   Text(
                     'Skip',
@@ -121,93 +155,17 @@ class SplashScreen2 extends StatelessWidget {
                         borderRadius: BorderRadius.circular(120),
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Positioned(
-            left: 43,
-            top: 13,
-            child: Container(
-              width: 297,
-              height: 21,
-              child: Stack(
-                children: [
-                  Positioned(
-                    left: 245,
-                    top: 0,
-                    child: Container(
-                      width: 16,
-                      height: 16,
-                      clipBehavior: Clip.antiAlias,
-                      decoration: BoxDecoration(),
-                      child: Stack(),
-                    ),
-                  ),
-                  Positioned(
-                    left: 261,
-                    top: 0,
-                    child: Container(
-                      width: 16,
-                      height: 16,
-                      clipBehavior: Clip.antiAlias,
-                      decoration: BoxDecoration(),
-                      child: Stack(),
-                    ),
-                  ),
-                  Positioned(
-                    left: 0,
-                    top: 1,
-                    child: Text(
-                      '11:11',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 13,
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w500,
-                      ),
+                    child: Icon(
+                      Icons.arrow_forward,
+                      color: Colors.white,
                     ),
                   ),
                 ],
-              ),
-            ),
-          ),
-          Positioned(
-            left: 19,
-            top: 591,
-            child: SizedBox(
-              width: 358,
-              height: 48,
-              child: Text(
-                'Contribute to sustainability with easy, effective recycling.',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: const Color(0xFF636363),
-                  fontSize: 14,
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-            ),
-          ),
-          Positioned(
-            left: 82,
-            top: 549,
-            child: Text(
-              'Join the Green Movement',
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 16,
-                fontFamily: 'Poppins',
-                fontWeight: FontWeight.w600,
               ),
             ),
           ),
         ],
       ),
-    ),
-    ],
     );
-    }
+  }
 }
