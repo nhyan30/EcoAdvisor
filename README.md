@@ -34,7 +34,7 @@
 
 1. Clone the repository  
    ```bash
-   git clone https://github.com/yourusername/ecohelper.git
+   git clone https://github.com/nhyan30/EcoAdvisor.git
 
 2. Install dependencies
    ```bash
