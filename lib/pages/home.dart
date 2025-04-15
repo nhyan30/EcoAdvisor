@@ -22,6 +22,7 @@ class HomeScreen extends StatelessWidget {
           color: Color(0xFFF5FFEC),
         ),
         child: SafeArea(
+          bottom: false,
           child: Column(
             children: [
               _buildStatusBar(),
@@ -80,33 +81,16 @@ class HomeScreen extends StatelessWidget {
             // Company logo image
             Image.asset(
               'images/company_logo.png',
-              width: 80,
-              height: 80,
+              width: 40,
+              height: 40,
               fit: BoxFit.contain,
             ),
-            const SizedBox(width: 1), // Smaller spacing between PT and Pascal Tech
-            // Pascal in green and Tech in blue
-            Row(
-              children: [
-                Text(
-                  'Pascal',
-                  style: TextStyle(
-                    color: Color(0xFFAEE55B),  // Green color for Pascal
-                    fontSize: 18,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                Text(
-                  ' Tech',
-                  style: TextStyle(
-                    color: Color(0xFF2196F3),  // Blue color for Tech
-                    fontSize: 18,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ],
+            const SizedBox(width: 0), // Spacing between logo and company name
+            // Company name image
+            Image.asset(
+              'images/pascalTech.png',
+              height: 16,
+              fit: BoxFit.contain,
             ),
           ],
         ),
@@ -115,20 +99,22 @@ class HomeScreen extends StatelessWidget {
           children: [
             Container(
               padding: const EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: Colors.white,
+              child: Image.asset(
+                'images/notifi.png',
+                width: 23,
+                height: 23,
+                fit: BoxFit.contain,
               ),
-              child: Icon(Icons.notifications_outlined, color: Colors.black, size: 20),
             ),
             const SizedBox(width: 10),
             Container(
               padding: const EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: Color(0xFFAEE55B),
+              child: Image.asset(
+                'images/profile.png',
+                width: 23,
+                height: 23,
+                fit: BoxFit.contain,
               ),
-              child: Icon(Icons.person_outline, color: Colors.black, size: 20),
             ),
           ],
         ),
@@ -144,16 +130,16 @@ class HomeScreen extends StatelessWidget {
           'Hi, Manar',
           style: TextStyle(
             color: Colors.black,
-            fontSize: 14,
+            fontSize: 16,
             fontFamily: 'Poppins',
-            fontWeight: FontWeight.w500,
+            fontWeight: FontWeight.w600,
           ),
         ),
         Text(
           'Let\'s contribution to our earth.',
           style: TextStyle(
             color: Colors.black,
-            fontSize: 10,
+            fontSize: 12,
             fontFamily: 'Poppins',
             fontWeight: FontWeight.w500,
           ),
@@ -176,7 +162,7 @@ class HomeScreen extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 12),
         child: Row(
           children: [
-            Icon(Icons.location_on, color: Colors.green, size: 20),
+            Icon(Icons.location_on, color: Colors.green, size: 30),
             const SizedBox(width: 8),
             Text(
               'Men\'s Library',
@@ -416,24 +402,76 @@ class HomeScreen extends StatelessWidget {
       height: 70,
       decoration: BoxDecoration(
         color: Color(0xFFAEE55B),
-        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1),
+            blurRadius: 10,
+            offset: Offset(0, -2),
+          ),
+        ],
       ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Icon(Icons.home, color: Colors.black),
-          Icon(Icons.location_on_outlined, color: Colors.black),
           Container(
-            width: 50,
-            height: 50,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              shape: BoxShape.circle,
+            width: 28,
+            height: 28,
+            child: Image.asset(
+              'images/home.png',
+              fit: BoxFit.contain,
             ),
-            child: Icon(Icons.qr_code_scanner, color: Colors.black),
           ),
-          Icon(Icons.shopping_bag_outlined, color: Colors.black),
-          Icon(Icons.language, color: Colors.black),
+          Container(
+            width: 30,
+            height: 30,
+            child: Image.asset(
+              'images/locator.png',
+              fit: BoxFit.contain,
+            ),
+          ),
+          // Center scan button with floating circular design
+          Transform.translate(
+            offset: const Offset(0, -12), // Move up to match UI
+            child: Container(
+              width: 70,
+              height: 70,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                shape: BoxShape.circle,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.1),
+                    blurRadius: 4,
+                    offset: Offset(0, 2),
+                  ),
+                ],
+              ),
+              child: Center(
+                child: Image.asset(
+                  'images/scan.png',
+                  width: 29,
+                  height: 29,
+                  fit: BoxFit.contain,
+                ),
+              ),
+            ),
+          ),
+          Container(
+            width: 36,
+            height: 36,
+            child: Image.asset(
+              'images/chatbot.png',
+              fit: BoxFit.contain,
+            ),
+          ),
+          Container(
+            width: 30,
+            height: 30,
+            child: Image.asset(
+              'images/community.png',
+              fit: BoxFit.contain,
+            ),
+          ),
         ],
       ),
     );
