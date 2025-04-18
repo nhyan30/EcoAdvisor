@@ -21,6 +21,8 @@ class LoginPage extends StatelessWidget {
 }
 
 class LoginScreen extends StatelessWidget {
+  const LoginScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -36,7 +38,7 @@ class LoginScreen extends StatelessWidget {
         children: [
           const SizedBox(height: 100),
           Image.asset(
-            'images/company_logo.png', // Replace with your logo image
+            'images/company_logo.png',
             width: 120,
             height: 120,
           ),
