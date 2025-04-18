@@ -36,7 +36,7 @@ class LoginScreen extends StatelessWidget {
         children: [
           const SizedBox(height: 100),
           Image.asset(
-            'images/pascalTech.png', // Replace with your logo image
+            'images/company_logo.png', // Replace with your logo image
             width: 120,
             height: 120,
           ),
