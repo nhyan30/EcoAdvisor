@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:eco_advisor/pages/Home.dart';
 
 void main() {
   runApp(const LoginPage());
@@ -111,21 +112,30 @@ class LoginScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 40),
-          Container(
-            width: double.infinity,
-            height: 50,
-            decoration: BoxDecoration(
-              color: const Color(0xFF8EC23F),
-              borderRadius: BorderRadius.circular(15),
-            ),
-            child: Center(
-              child: Text(
-                'Login',
-                style: TextStyle(
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w600,
-                  fontSize: 16,
-                  color: Colors.white,
+          GestureDetector(
+            onTap: () {
+              // Navigate to Home page after login
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const Home()),
+              );
+            },
+            child: Container(
+              width: double.infinity,
+              height: 50,
+              decoration: BoxDecoration(
+                color: const Color(0xFF8EC23F),
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: const Center(
+                child: Text(
+                  'Login',
+                  style: TextStyle(
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w600,
+                    fontSize: 16,
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ),
