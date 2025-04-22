@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-
-void main() {
-  runApp(const Home());
-}
+import 'package:flutter_svg/flutter_svg.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -91,9 +88,9 @@ class HomeScreen extends StatelessWidget {
             ),
             const SizedBox(width: 0), // Spacing between logo and company name
             // Company name image
-            Image.asset(
-              'images/pascalTech.png',
-              height: 16,
+            SvgPicture.asset(
+              'images/pascalTech.svg',
+              height: 35,
               fit: BoxFit.contain,
             ),
           ],
@@ -103,8 +100,8 @@ class HomeScreen extends StatelessWidget {
           children: [
             Container(
               padding: const EdgeInsets.all(8),
-              child: Image.asset(
-                'images/notifi.png',
+              child: SvgPicture.asset(
+                'images/notifi.svg',
                 width: 23,
                 height: 23,
                 fit: BoxFit.contain,
@@ -113,8 +110,8 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(width: 10),
             Container(
               padding: const EdgeInsets.all(8),
-              child: Image.asset(
-                'images/profile.png',
+              child: SvgPicture.asset(
+                'images/profile.svg',
                 width: 23,
                 height: 23,
                 fit: BoxFit.contain,
@@ -143,7 +140,7 @@ class HomeScreen extends StatelessWidget {
           'Let\'s contribution to our earth.',
           style: TextStyle(
             color: Colors.black,
-            fontSize: 12,
+            fontSize: 11,
             fontFamily: 'Poppins',
             fontWeight: FontWeight.w500,
           ),
@@ -202,7 +199,7 @@ class HomeScreen extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            _buildCategoryItem(Icons.water_drop_outlined),
+            _buildCategoryItem('images/plastic.svg'),
             _buildCategoryItem(Icons.recycling),
             _buildCategoryItem(Icons.checkroom),
             _buildCategoryItem(Icons.description_outlined),
@@ -214,7 +211,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildCategoryItem(IconData icon) {
+  Widget _buildCategoryItem(dynamic icon) {
     return Container(
       width: 50,
       height: 50,
@@ -222,7 +219,16 @@ class HomeScreen extends StatelessWidget {
         color: const Color(0xFFAEE55B),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
       ),
-      child: Icon(icon, color: Colors.black),
+      child: icon is IconData 
+          ? Icon(icon, color: Colors.black)
+          : Center(
+              child: SvgPicture.asset(
+                icon,
+                width: 11, // Adjust this value to resize the SVG
+                height: 26, // Adjust this value to resize the SVG
+                fit: BoxFit.contain, // Optional: ensure consistent color
+              ),
+            ),
     );
   }
 
@@ -420,16 +426,16 @@ class HomeScreen extends StatelessWidget {
           Container(
             width: 28,
             height: 28,
-            child: Image.asset(
-              'images/home.png',
+            child: SvgPicture.asset(
+              'images/home.svg',
               fit: BoxFit.contain,
             ),
           ),
           Container(
             width: 30,
             height: 30,
-            child: Image.asset(
-              'images/locator.png',
+            child: SvgPicture.asset(
+              'images/locator.svg',
               fit: BoxFit.contain,
             ),
           ),
@@ -451,8 +457,8 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
               child: Center(
-                child: Image.asset(
-                  'images/scan.png',
+                child: SvgPicture.asset(
+                  'images/scan.svg',
                   width: 29,
                   height: 29,
                   fit: BoxFit.contain,
@@ -463,16 +469,16 @@ class HomeScreen extends StatelessWidget {
           Container(
             width: 36,
             height: 36,
-            child: Image.asset(
-              'images/chatbot.png',
+            child: SvgPicture.asset(
+              'images/chatbot.svg',
               fit: BoxFit.contain,
             ),
           ),
           Container(
             width: 30,
             height: 30,
-            child: Image.asset(
-              'images/community.png',
+            child: SvgPicture.asset(
+              'images/community.svg',
               fit: BoxFit.contain,
             ),
           ),
