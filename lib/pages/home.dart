@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:eco_advisor/pages/bot.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -49,7 +50,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              _buildBottomNavBar(),
+              _buildBottomNavBar(context),
             ],
           ),
         ),
@@ -407,7 +408,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildBottomNavBar() {
+  Widget _buildBottomNavBar(BuildContext context) {
     return Container(
       height: 70,
       decoration: BoxDecoration(
@@ -466,12 +467,20 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
           ),
-          Container(
-            width: 36,
-            height: 36,
-            child: SvgPicture.asset(
-              'images/chatbot.svg',
-              fit: BoxFit.contain,
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const bot()),
+              );
+            },
+            child: Container(
+              width: 36,
+              height: 36,
+              child: SvgPicture.asset(
+                'images/chatbot.svg',
+                fit: BoxFit.contain,
+              ),
             ),
           ),
           Container(

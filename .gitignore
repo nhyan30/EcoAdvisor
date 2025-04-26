@@ -33,6 +33,9 @@ migrate_working_dir/
 .pub/
 /build/
 
+# Environment configuration with sensitive data
+lib/config/env.dart
+
 # Symbolication related
 app.*.symbols
 

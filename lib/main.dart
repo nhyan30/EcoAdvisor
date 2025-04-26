@@ -1,4 +1,3 @@
-import 'package:eco_advisor/pages/Home.dart';
 import 'package:eco_advisor/pages/login.dart';
 import 'package:flutter/material.dart';
 
