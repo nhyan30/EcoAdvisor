@@ -103,8 +103,8 @@ class HomeScreen extends StatelessWidget {
               padding: const EdgeInsets.all(8),
               child: SvgPicture.asset(
                 'images/notifi.svg',
-                width: 23,
-                height: 23,
+                width: 25,
+                height: 25,
                 fit: BoxFit.contain,
               ),
             ),
@@ -113,8 +113,8 @@ class HomeScreen extends StatelessWidget {
               padding: const EdgeInsets.all(8),
               child: SvgPicture.asset(
                 'images/profile.svg',
-                width: 23,
-                height: 23,
+                width: 25,
+                height: 25,
                 fit: BoxFit.contain,
               ),
             ),
@@ -170,7 +170,7 @@ class HomeScreen extends StatelessWidget {
               'Men\'s Library',
               style: TextStyle(
                 color: Color(0xFFA8A8A8),
-                fontSize: 11,
+                fontSize: 12,
                 fontFamily: 'Poppins',
                 fontWeight: FontWeight.w400,
               ),
@@ -189,7 +189,7 @@ class HomeScreen extends StatelessWidget {
           'Recycling Guide',
           style: TextStyle(
             color: Colors.black,
-            fontSize: 18,
+            fontSize: 20,
             fontFamily: 'Inter',
             fontWeight: FontWeight.w500,
             height: 1.50,
@@ -201,11 +201,11 @@ class HomeScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             _buildCategoryItem('images/plastic.svg'),
-            _buildCategoryItem(Icons.recycling),
-            _buildCategoryItem(Icons.checkroom),
-            _buildCategoryItem(Icons.description_outlined),
-            _buildCategoryItem(Icons.devices_other),
-            _buildCategoryItem(Icons.delete_outline),
+            _buildCategoryItem('images/electric.svg'),
+            _buildCategoryItem('images/cloth.svg'),
+            _buildCategoryItem('images/carton.svg'),
+            _buildCategoryItem('images/metal.svg'),
+            _buildCategoryItem('images/battery.svg'),
           ],
         ),
       ],
@@ -225,8 +225,8 @@ class HomeScreen extends StatelessWidget {
           : Center(
               child: SvgPicture.asset(
                 icon,
-                width: 11, // Adjust this value to resize the SVG
-                height: 26, // Adjust this value to resize the SVG
+                width: 15, // Adjust this value to resize the SVG
+                height: 24, // Adjust this value to resize the SVG
                 fit: BoxFit.contain, // Optional: ensure consistent color
               ),
             ),
@@ -240,73 +240,73 @@ class HomeScreen extends StatelessWidget {
           children: [
             Expanded(
               child: _buildStatCard(
-                color: Color(0xFFFFF4FE),
+                color: Color(0xFFFFF4FF),
                 title: '0.00',
                 prefix: 'AED',
                 subtitle: 'Earned So far',
                 icon: Icons.account_balance_wallet_outlined,
-                iconColor: Color(0xFFFFB6E6),
+                iconColor: Color(0x7EFEB5FF),
               ),
             ),
-            const SizedBox(width: 15),
+            const SizedBox(width: 26),
             Expanded(
               child: _buildStatCard(
-                color: Color(0xFFFFF8EE),
+                color: Color(0x7EFFDFDF),
                 title: '0',
                 subtitle: 'Pickups',
                 icon: Icons.local_shipping_outlined,
-                iconColor: Color(0xFFFFD2A9),
+                iconColor: Color(0xFFF1C59D),
               ),
             ),
           ],
         ),
-        const SizedBox(height: 15),
+        const SizedBox(height: 19),
         Row(
           children: [
             Expanded(
               child: _buildStatCard(
-                color: Color(0xFFFFFBE6),
+                color: Color(0x7EFFE9C0),
                 title: '~0',
                 subtitle: 'Fuel Saved',
                 suffix: 'Ltrs',
                 icon: Icons.local_gas_station,
-                iconColor: Color(0xFFFFE899),
+                iconColor: Color(0x7EFFC852),
               ),
             ),
-            const SizedBox(width: 15),
+            const SizedBox(width: 26),
             Expanded(
               child: _buildStatCard(
-                color: Color(0xFFECF8FF),
+                color: Color(0x7ED6FFFF),
                 title: '~0',
                 subtitle: 'CO2 Averted',
                 suffix: 'Kgs',
                 icon: Icons.cloud_outlined,
-                iconColor: Color(0xFFB6E0FF),
+                iconColor: Color(0x7EA4B9FF),
               ),
             ),
           ],
         ),
-        const SizedBox(height: 15),
+        const SizedBox(height: 19),
         Row(
           children: [
             Expanded(
               child: _buildStatCard(
-                color: Color(0xFFEBFFEB),
+                color: Color(0x7CAFFFAB),
                 title: '~0',
                 subtitle: 'Trees saved',
                 icon: Icons.park_outlined,
-                iconColor: Color(0xFFB6FFB6),
+                iconColor: Color(0x7E9DD549),
               ),
             ),
-            const SizedBox(width: 15),
+            const SizedBox(width: 26),
             Expanded(
               child: _buildStatCard(
-                color: Color(0xFFFFFDE6),
+                color: Color(0x7EFFF399),
                 title: '~0',
                 subtitle: 'Waste',
                 suffix: 'Kgs',
                 icon: Icons.delete_outline,
-                iconColor: Color(0xFFFFF599),
+                iconColor: Color(0x7EE7CC00),
               ),
             ),
           ],
@@ -325,11 +325,11 @@ class HomeScreen extends StatelessWidget {
     required Color iconColor,
   }) {
     return Container(
-      height: 120,
+      height: 140,
       decoration: ShapeDecoration(
         color: color,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(30),
         ),
       ),
       child: Stack(

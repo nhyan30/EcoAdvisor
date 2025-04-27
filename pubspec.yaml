@@ -73,6 +73,11 @@ flutter:
     - images/profile.svg
     - images/plastic.svg
     - images/newchat.svg
+    - images/electric.svg
+    - images/cloth.svg
+    - images/carton.svg
+    - images/metal.svg
+    - images/battery.svg
 
 
   # To add assets to your application, add an assets section, like this:
