@@ -346,6 +346,9 @@ class _ChatScreenState extends State<ChatScreen> {
     
     _textController.clear();
     
+    // Store the image before clearing it from state
+    final File? imageToSend = _selectedImage;
+    
     ChatMessage userMessage = ChatMessage(
       text: text,
       isUser: true,
@@ -359,23 +362,55 @@ class _ChatScreenState extends State<ChatScreen> {
     });
     
     _scrollToBottom(); // Scroll to show the new message
-    _getAIResponseWithFallback(text);
+    _getAIResponseWithFallback(text, imageFile: imageToSend);
   }
 
-  Future<void> _getAIResponse(String query, {bool useSecondKey = false}) async {
+  Future<void> _getAIResponse(String query, {bool useSecondKey = false, File? imageFile}) async {
     try {
       // Prepare the API URL
       final url = '$_endpoint/openai/deployments/$_deploymentId/chat/completions?api-version=$_apiVersion';
       
       // Prepare the request body
-      final body = jsonEncode({
-        'messages': [
-          {'role': 'system', 'content': 'You are a sustainability expert specializing in eco-friendly practices, recycling, waste reduction, renewable energy, and conservation. Provide practical, actionable advice that helps users reduce their environmental impact. Include specific tips, facts, and resources when appropriate. Focus on solutions that are accessible to everyday people and explain environmental concepts in clear, understandable terms.'},
-          {'role': 'user', 'content': query}
-        ],
-        'max_tokens': 800,
-        'temperature': 0.7,
-      });
+      Map<String, dynamic> requestBody;
+      
+      if (imageFile != null) {
+        // Convert image to base64
+        final List<int> imageBytes = await imageFile.readAsBytes();
+        final String base64Image = base64Encode(imageBytes);
+        
+        // Create a message that includes both text and image
+        requestBody = {
+          'messages': [
+            {'role': 'system', 'content': 'You are a sustainability expert specializing in eco-friendly practices, recycling, waste reduction, renewable energy, and conservation. Provide practical, actionable advice that helps users reduce their environmental impact. Include specific tips, facts, and resources when appropriate. Focus on solutions that are accessible to everyday people and explain environmental concepts in clear, understandable terms.'},
+            {
+              'role': 'user',
+              'content': [
+                {'type': 'text', 'text': query},
+                {
+                  'type': 'image_url',
+                  'image_url': {
+                    'url': 'data:image/jpeg;base64,$base64Image'
+                  }
+                }
+              ]
+            }
+          ],
+          'max_tokens': 800,
+          'temperature': 0.7,
+        };
+      } else {
+        // Text-only request
+        requestBody = {
+          'messages': [
+            {'role': 'system', 'content': 'You are a sustainability expert specializing in eco-friendly practices, recycling, waste reduction, renewable energy, and conservation. Provide practical, actionable advice that helps users reduce their environmental impact. Include specific tips, facts, and resources when appropriate. Focus on solutions that are accessible to everyday people and explain environmental concepts in clear, understandable terms.'},
+            {'role': 'user', 'content': query}
+          ],
+          'max_tokens': 800,
+          'temperature': 0.7,
+        };
+      }
+      
+      final body = jsonEncode(requestBody);
       
       // Make the API request
       final response = await http.post(
@@ -437,14 +472,14 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   // Function to try with first key, then fall back to second key if needed
-  Future<void> _getAIResponseWithFallback(String query) async {
+  Future<void> _getAIResponseWithFallback(String query, {File? imageFile}) async {
     try {
       // Try with the first key
-      await _getAIResponse(query, useSecondKey: false);
+      await _getAIResponse(query, useSecondKey: false, imageFile: imageFile);
     } catch (e) {
       // If first key fails, try with the second key
       try {
-        await _getAIResponse(query, useSecondKey: true);
+        await _getAIResponse(query, useSecondKey: true, imageFile: imageFile);
       } catch (e) {
         // Both keys failed
         setState(() {
