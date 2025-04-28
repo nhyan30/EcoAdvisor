@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:eco_advisor/pages/bot.dart';
+import 'package:eco_advisor/pages/scanner.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -443,26 +444,34 @@ class HomeScreen extends StatelessWidget {
           // Center scan button with floating circular design
           Transform.translate(
             offset: const Offset(0, -12), // Move up to match UI
-            child: Container(
-              width: 70,
-              height: 70,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                shape: BoxShape.circle,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.1),
-                    blurRadius: 4,
-                    offset: Offset(0, 2),
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ScannerPage()),
+                );
+              },
+              child: Container(
+                width: 70,
+                height: 70,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  shape: BoxShape.circle,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.1),
+                      blurRadius: 4,
+                      offset: Offset(0, 2),
+                    ),
+                  ],
+                ),
+                child: Center(
+                  child: SvgPicture.asset(
+                    'images/scan.svg',
+                    width: 29,
+                    height: 29,
+                    fit: BoxFit.contain,
                   ),
-                ],
-              ),
-              child: Center(
-                child: SvgPicture.asset(
-                  'images/scan.svg',
-                  width: 29,
-                  height: 29,
-                  fit: BoxFit.contain,
                 ),
               ),
             ),
