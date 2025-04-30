@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart'; // <-- Needed to load SVGs
 import 'package:eco_advisor/pages/login.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 void main() {
   runApp(const FigmaToCodeApp());
