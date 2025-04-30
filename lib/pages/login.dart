@@ -21,8 +21,13 @@ class LoginPage extends StatelessWidget {
   }
 }
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
 
+class _LoginScreenState extends State<LoginScreen> {
+  bool rememberMe = false;
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +79,8 @@ class LoginScreen extends StatelessWidget {
               ),
               filled: true,
               fillColor: Colors.white,
-              contentPadding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+              contentPadding:
+              const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(15),
                 borderSide: BorderSide.none,
@@ -92,7 +98,8 @@ class LoginScreen extends StatelessWidget {
               ),
               filled: true,
               fillColor: Colors.white,
-              contentPadding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+              contentPadding:
+              const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(15),
                 borderSide: BorderSide.none,
@@ -100,21 +107,43 @@ class LoginScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 20),
-          Align(
-            alignment: Alignment.centerRight,
-            child: Text(
-              'Forgot Password?',
-              style: TextStyle(
-                fontFamily: 'Poppins',
-                color: Color(0xFF8F8F8F),
-                fontSize: 14,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Checkbox(
+                    value: rememberMe,
+                    activeColor: Color(0xFF8EC23F),
+                    onChanged: (bool? value) {
+                      setState(() {
+                        rememberMe = value ?? false;
+                      });
+                    },
+                  ),
+                  const Text(
+                    'Remember me',
+                    style: TextStyle(
+                      fontFamily: 'Poppins',
+                      fontSize: 14,
+                      color: Color(0xFF636363),
+                    ),
+                  ),
+                ],
               ),
-            ),
+              Text(
+                'Forgot Password?',
+                style: const TextStyle(
+                  fontFamily: 'Poppins',
+                  color: Color(0xFF8F8F8F),
+                  fontSize: 14,
+                ),
+              ),
+            ],
           ),
           const SizedBox(height: 40),
           GestureDetector(
             onTap: () {
-              // Navigate to Home page after login
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(builder: (context) => const Home()),
@@ -154,22 +183,22 @@ class LoginScreen extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {
-                  // Navigate to the SignUp (login2.dart) page
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const SignUpPage()),
+                    MaterialPageRoute(
+                        builder: (context) => const SignUpPage()),
                   );
                 },
-              child: Text(
-                'Sign Up',
-                style: TextStyle(
-                  fontFamily: 'Poppins',
-                  color: Color(0xFF66AA00),
-                  fontWeight: FontWeight.w600,
-                  fontSize: 14,
-                  decoration: TextDecoration.underline,
+                child: const Text(
+                  'Sign Up',
+                  style: TextStyle(
+                    fontFamily: 'Poppins',
+                    color: Color(0xFF66AA00),
+                    fontWeight: FontWeight.w600,
+                    fontSize: 14,
+                    decoration: TextDecoration.underline,
+                  ),
                 ),
-              ),
               ),
             ],
           ),
