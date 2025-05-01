@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:eco_advisor/pages/Home.dart';
-
+import 'package:eco_advisor/pages/signup.dart';
 void main() {
   runApp(const LoginPage());
 }
@@ -152,14 +152,24 @@ class LoginScreen extends StatelessWidget {
                   fontSize: 14,
                 ),
               ),
-              Text(
+              GestureDetector(
+                onTap: () {
+                  // Navigate to the SignUp (login2.dart) page
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const SignUpPage()),
+                  );
+                },
+              child: Text(
                 'Sign Up',
                 style: TextStyle(
                   fontFamily: 'Poppins',
                   color: Color(0xFF66AA00),
                   fontWeight: FontWeight.w600,
                   fontSize: 14,
+                  decoration: TextDecoration.underline,
                 ),
+              ),
               ),
             ],
           ),

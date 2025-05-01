@@ -1,3 +1,4 @@
+import 'package:eco_advisor/pages/community.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:eco_advisor/pages/bot.dart';
@@ -492,13 +493,21 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
           ),
-          Container(
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const CommunityPage()),
+              );
+            },
+          child: Container(
             width: 30,
             height: 30,
             child: SvgPicture.asset(
               'images/community.svg',
               fit: BoxFit.contain,
             ),
+          ),
           ),
         ],
       ),

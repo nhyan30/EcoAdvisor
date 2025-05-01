@@ -79,6 +79,14 @@ flutter:
     - images/carton.svg
     - images/metal.svg
     - images/battery.svg
+    - images/google.svg
+    - images/apple.svg
+    - images/email.svg
+    - images/profile_img.jpeg
+    - images/tom.png
+    - images/post.jpg
+    - images/sophia.png
+    - images/upcycle.png
 
 
   # To add assets to your application, add an assets section, like this:
