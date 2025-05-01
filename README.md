@@ -34,7 +34,7 @@
 
 1. Clone the repository  
    ```bash
-   git clone https://github.com/nhyan30/EcoAdvisor.git
+   git clone https://github.com/nhyan30/PascalAdvisor.git
 
 2. Install dependencies
    ```bash
