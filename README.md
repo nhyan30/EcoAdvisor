@@ -1,6 +1,6 @@
-# ♻️ EcoAdvisor – Smart Recycling Assistant App
+# ♻️ PascalAdvisor – Smart Recycling Assistant App
 
-**EcoAdvisor** is a smart recycling assistant mobile app that helps users recycle, upcycle, and connect with local recycling centers. The app supports guests, regular users, moderators, and admins, each with special access and functions.
+**PascalAdvisor** is a smart recycling assistant mobile app that helps users recycle, upcycle, and connect with local recycling centers. The app supports guests, regular users, moderators, and admins, each with special access and functions.
 
 ## 🌟 Features
 
