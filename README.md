@@ -30,6 +30,11 @@
    - Manage system-wide settings, permissions, and user data.
 
 
+## 🎨 Prototype
+Check out the interactive Figma prototype here:
+👉 [View Prototype](https://www.figma.com/proto/96kmEoLalYyhqEbp98eI4q/Pascal-Tech-GUI?node-id=1-18&p=f&t=8OImuP6rqknIreY6-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A2)
+
+
 ## 🚀 Getting Started
 
 1. Clone the repository  
